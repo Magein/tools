@@ -43,8 +43,7 @@
  常量：
  1. TYPE_UPPER 生成大写字母的随机字符串
  2. TYPE_LOWER 生成小写字母的随机字符串
- 
- TYPE_NUM 数字
+ 3. TYPE_NUM 数字
  TYPE_UPPER_LOWER 大写加小写
  TYPE_UPPER_NUM 大写加数字
  TYPE_LOWER_NUM 小写加数字
