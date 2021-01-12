@@ -73,3 +73,18 @@
  4. readFile  读取文件并导出
  5. export    导出文件
  6. save      保存到指定位置 需要制定完整的路径  如：'xxx/xxx/xxx.csv'、'xxx/xxx/xxx.txt'
+ 
+#### RemoteImage.php
+
+ > 下载远程图片
+ 
+```angular2
+use magein\tools\common\RemoteImage;
+$images = new RemoteImage('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fa2.att.hudong.com%2F27%2F81%2F01200000194677136358818023076.jpg&refer=http%3A%2F%2Fa2.att.hudong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613036967&t=56804979a522f711241cb156e842d605', './test/test/test');
+echo $images->isWrite();
+``` 
+ 
+ 
+ 
+ 
+ 
