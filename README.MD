@@ -47,6 +47,8 @@
  4. TYPE_UPPER_LOWER 大写加小写
  5. TYPE_UPPER_NUM 大写加数字
  6. TYPE_LOWER_NUM 小写加数字
- TYPE_MIXED 混合
+ 7. TYPE_MIXED 混合
+ 
+ 方法：
  
  1. make 生成随机字符串，接受三个参数，依次是生成的长度、字符串类型、是否过滤0|o|z|2等容易混淆的字符
