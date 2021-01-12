@@ -76,7 +76,7 @@
  
 #### RemoteImage.php
 
- > 下载远程图片
+ > 下载远程图片到本地
  
 ```angular2
 use magein\tools\common\RemoteImage;
