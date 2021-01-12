@@ -52,3 +52,24 @@
  方法：
  
  1. make 生成随机字符串，接受三个参数，依次是生成的长度、字符串类型、是否过滤0|o|z|2等容易混淆的字符
+
+
+#### ClientIp.php
+
+ > 获取客户端的ip地址
+ 
+ 方法:
+ 
+ 1. get
+ 
+#### Csv.php
+
+ > csv导出类
+ 
+ 方法:
+ 1. setHeader  设置表格头部信息  可通过构造方法第一个参数传递
+ 2. setData    设置表格内容      可通过构造方法第二个参数传递
+ 3. correcting 校正头部跟内容的位置
+ 4. readFile  读取文件并导出
+ 5. export    导出文件
+ 6. save      保存到指定位置 需要制定完整的路径  如：'xxx/xxx/xxx.csv'、'xxx/xxx/xxx.txt'
