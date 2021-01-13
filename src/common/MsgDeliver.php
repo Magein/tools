@@ -68,6 +68,16 @@ class MsgDeliver
     }
 
     /**
+     * @param $code
+     * @param $message
+     */
+    public static function set($code, $message)
+    {
+        self::$code = $code;
+        self::$message = $message;
+    }
+
+    /**
      * @return array
      */
     public static function get()
