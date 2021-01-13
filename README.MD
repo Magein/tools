@@ -116,5 +116,63 @@
  1. make 生成
  2. verify 验证
  
+#### [MsgDeliver.php](https://github.com/Magein/tools/blob/master/src/security/MsgDeliver.php)
+
+ > 消息传递器，使用单列模式，即用型，用户设定一些错误、或者验证信息
+ 
+ 1. set 设置
+ 2. get 获取
+ 3. clear 清除 
+ 
+#### [TreeStructure.php](https://github.com/Magein/tools/blob/master/src/security/TreeStructure.php)
+
+ > 数组处理成树结构
+ 
+ ```php
+$data = [
+    [
+        'id' => 1,
+        'title' => '第一个',
+        'pid' => 0
+    ],
+    [
+        'id' => 2,
+        'title' => '第二个',
+        'pid' => 0
+    ],
+    [
+        'id' => 3,
+        'pid' => 1,
+        'title' => '第一个的子集'
+    ],
+    [
+        'id' => 4,
+        'pid' => 1,
+        'title' => '第一个的子集'
+    ],
+    [
+        'id' => 5,
+        'pid' => 2,
+        'title' => '第二个的子集'
+    ],
+    [
+        'id' => 6,
+        'pid' => 2,
+        'title' => '第二个的子集'
+    ],
+    [
+        'id' => 7,
+        'pid' => 5,
+        'title' => '第二个的子集的子集'
+    ]
+];
+
+// 第一个参数是要处理的数据  第二个参数是关联字段（默认pid）  第三个是主键（默认id）
+$tree = new TreeStructure($data, 'pid', 'id');
+// 可传递一个回调函数，用于其他逻辑
+$result = $tree->tree();
+var_dump($result);
+```
+ 
  
  
