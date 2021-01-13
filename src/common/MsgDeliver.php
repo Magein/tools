@@ -19,12 +19,12 @@ class MsgDeliver
     /**
      * @var int
      */
-    public static $code = null;
+    private static $code = null;
 
     /**
      * @var string
      */
-    public static $message = null;
+    private static $message = null;
 
     /**
      * 防止实例化
@@ -42,19 +42,35 @@ class MsgDeliver
     }
 
     /**
-     * @param int $code
-     * @param string $message
+     * @param $code
+     * @return mixed
      */
-    public static function set($code = null, $message = null)
+    public static function code($code = null)
     {
-        self::$code = $code;
-        self::$message = $message;
+        if ($code) {
+            self::$code = $code;
+        } else {
+            return self::$code;
+        }
+    }
+
+    /**
+     * @param $message
+     * @return string
+     */
+    public static function message(string $message = null)
+    {
+        if ($message !== null) {
+            self::$message = $message;
+        } else {
+            return self::$message;
+        }
     }
 
     /**
      * @return array
      */
-    public function get()
+    public static function get()
     {
         return [
             'code' => self::$code,
@@ -65,7 +81,7 @@ class MsgDeliver
     /**
      * 清除
      */
-    public function clear()
+    public static function clear()
     {
         self::$code = null;
         self::$message = null;

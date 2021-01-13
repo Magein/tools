@@ -83,18 +83,12 @@
  5. export    导出文件
  6. save      保存到指定位置 需要制定完整的路径  如：'xxx/xxx/xxx.csv'、'xxx/xxx/xxx.txt'
  
-#### [RemoteImage.php](https://github.com/Magein/tools/blob/master/src/common/RemoteImage.php)
+#### [ImageLocal.php](https://github.com/Magein/tools/blob/master/src/common/ImageLocal.php)
 
- > 下载远程图片到本地
+ > 图片保存到本地指定路径
  
-  ```
-   
-   use magein\tools\common\RemoteImage;
-   $images = new RemoteImage('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fa2.att.hudong.com%2F27%2F81%2F01200000194677136358818023076.jpg&refer=http%3A%2F%2Fa2.att.hudong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613036967&t=56804979a522f711241cb156e842d605', './test/test/test');
-   // 验证是否写入到指定路径  返回的是bool值
-   echo $images->isWrite();
-   
-  ```
+ 1. pull 下载远程图片到本地
+ 2. base64 保存base64编码的图片到本地
   
 #### [Location.php](https://github.com/Magein/tools/blob/master/src/common/Location.php)
 
@@ -116,7 +110,7 @@
  1. make 生成
  2. verify 验证
  
-#### [MsgDeliver.php](https://github.com/Magein/tools/blob/master/src/security/MsgDeliver.php)
+#### [MsgDeliver.php](https://github.com/Magein/tools/blob/master/src/common/MsgDeliver.php)
 
  > 消息传递器，使用单列模式，即用型，用户设定一些错误、或者验证信息
  
@@ -124,7 +118,7 @@
  2. get 获取
  3. clear 清除 
  
-#### [TreeStructure.php](https://github.com/Magein/tools/blob/master/src/security/TreeStructure.php)
+#### [TreeStructure.php](https://github.com/Magein/tools/blob/master/src/common/TreeStructure.php)
 
  > 数组处理成树结构
  
@@ -173,6 +167,18 @@ $tree = new TreeStructure($data, 'pid', 'id');
 $result = $tree->tree();
 var_dump($result);
 ```
+
+#### [Verify.php](https://github.com/Magein/tools/blob/master/src/common/Verify.php)
+
+ > 常用的验证字段正则表达式
  
+ 1. phone 验证手机号码
+ 2. email 验证email
+ 3. qq 验证qq
+ 4. idCard 验证字符串
+ 5. url 验证是否是链接  必须包含 http或者https
+ 6. ip 验证ip
+ 7. password 密码  数字字母下划线6到18位
+ 8. image 验证是否是图片 只验证ext 允许的格式jpg、jpeg、gif、png
  
  
