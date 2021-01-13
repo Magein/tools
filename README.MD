@@ -20,7 +20,7 @@
 
  > 使用方法很简单，就是一些常用的工具
  
-#### UnixTime.php 
+#### [UnixTime.php](https://github.com/Magein/tools/blob/master/src/common/UnixTime.php) 
 
  > 获取各个类型的时间戳
   
@@ -36,7 +36,7 @@
  10. prevWeek 最近7天的时间戳范围  这里是传递参数的前七天的时间戳范围
  11. lastWeek 前几周的时间范围，传递2 表示前两周的的时间范围， 3表示前三周的时间范围，即上周，上上周的概念
  
-#### Variable.php
+#### [Variable.php](https://github.com/Magein/tools/blob/master/src/common/Variable.php)
 
  > 命名方式转化
  
@@ -45,7 +45,7 @@
  3. transToUnderline 转化为下划线命名
  
  
-#### RandomString.php
+#### [RandomString.php](https://github.com/Magein/tools/blob/master/src/common/RandomString.php)
 
  >生成随机字符串 
  
