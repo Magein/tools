@@ -99,12 +99,17 @@ class RegVerify
     }
 
     /**
+     * 传递的是一个url 则自动获取格式，如果传递的是格式，则直接验证
      * @param $url
      * @return bool
      */
     public static function image($url)
     {
-        $ext = strtolower(pathinfo($url, PATHINFO_EXTENSION));
+        if (self::url($url)) {
+            $ext = strtolower(pathinfo($url, PATHINFO_EXTENSION));
+        } else {
+            $ext = $url;
+        }
 
         if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
             return true;
