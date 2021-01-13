@@ -4,12 +4,20 @@
   
 ### 目录
 
- 1. common
- 2. extra
+ common
+ 
+ > 开发中常用的工具类，依赖于与任何框架，需php版本大于7.0，直接使用即可
+ 
+ security
+ 
+ >  接口安全工具类
+ 
+ extra
+ 
+ > 依赖第三方扩展的工具类
  
 ### common 
 
- > 开发中常用的工具类，依赖于与任何框架，需php版本大于7.0，直接使用即可
  
 #### UnixTime.php 
 
@@ -78,13 +86,34 @@
 
  > 下载远程图片到本地
  
-```angular2
-use magein\tools\common\RemoteImage;
-$images = new RemoteImage('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fa2.att.hudong.com%2F27%2F81%2F01200000194677136358818023076.jpg&refer=http%3A%2F%2Fa2.att.hudong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613036967&t=56804979a522f711241cb156e842d605', './test/test/test');
-echo $images->isWrite();
-``` 
+  ```
+   
+   use magein\tools\common\RemoteImage;
+   $images = new RemoteImage('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fa2.att.hudong.com%2F27%2F81%2F01200000194677136358818023076.jpg&refer=http%3A%2F%2Fa2.att.hudong.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613036967&t=56804979a522f711241cb156e842d605', './test/test/test');
+   // 验证是否写入到指定路径  返回的是bool值
+   echo $images->isWrite();
+   
+  ```
+  
+#### Location.php
+
+ > 获取经纬度，传递经纬度字符串，不区分经度在前还是纬度在前，自动提取，
  
+ <font color="red">仅仅使用与国内的经纬度坐标>_< </font> 
  
+####  JsonToken.php
+
+ > 接口中常用的jwt验证函数
+ 
+ 1. make 生成token  可以传递一个字符串 用于记录自定义的标识信息
+ 2. verify 验证token
+ 
+#### XRequestId.php
+
+ > 自定义的请求验证参数，一般用于接口请求来源验证
+ 
+ 1. make 生成
+ 2. verify 验证
  
  
  
