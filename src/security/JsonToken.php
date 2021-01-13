@@ -131,9 +131,9 @@ class JsonToken
      * @param string|null $token
      * @return bool|mixed
      */
-    public function verify(string $token = null)
+    public function verify($token = null)
     {
-        if (empty($token)) {
+        if (empty($token) || !is_string($token)) {
             return false;
         }
 

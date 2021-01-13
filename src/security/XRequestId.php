@@ -34,9 +34,9 @@ class XRequestId
      * @param $key
      * @return bool
      */
-    public static function verify(string $request_id, $key = null)
+    public static function verify($request_id, $key = null)
     {
-        if (empty($request_id)) {
+        if (empty($request_id) || !is_string($request_id)) {
             return false;
         }
 
