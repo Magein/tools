@@ -102,14 +102,14 @@
  
  <font color="red">仅仅使用与国内的经纬度坐标>_< </font> 
  
-####  JsonToken.php
+####  [JsonToken.php](https://github.com/Magein/tools/blob/master/src/common/JsonToken.php)
 
  > 接口中常用的jwt验证函数
  
  1. make 生成token  可以传递一个字符串 用于记录自定义的标识信息
  2. verify 验证token
  
-#### XRequestId.php
+#### [XRequestId.php](https://github.com/Magein/tools/blob/master/src/common/ClientIp.php)
 
  > 自定义的请求验证参数，一般用于接口请求来源验证
  
