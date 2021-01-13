@@ -63,7 +63,7 @@
  1. make 生成随机字符串，接受三个参数，依次是生成的长度、字符串类型、是否过滤0|o|z|2等容易混淆的字符
 
 
-#### ClientIp.php
+#### [ClientIp.php](https://github.com/Magein/tools/blob/master/src/common/ClientIp.php)
 
  > 获取客户端的ip地址
  
@@ -71,7 +71,7 @@
  
  1. get
  
-#### Csv.php
+#### [Csv.php](https://github.com/Magein/tools/blob/master/src/common/Csv.php)
 
  > csv导出类
  
@@ -83,7 +83,7 @@
  5. export    导出文件
  6. save      保存到指定位置 需要制定完整的路径  如：'xxx/xxx/xxx.csv'、'xxx/xxx/xxx.txt'
  
-#### RemoteImage.php
+#### [RemoteImage.php](https://github.com/Magein/tools/blob/master/src/common/RemoteImage.php)
 
  > 下载远程图片到本地
  
@@ -96,20 +96,20 @@
    
   ```
   
-#### Location.php
+#### [Location.php](https://github.com/Magein/tools/blob/master/src/common/Location.php)
 
  > 获取经纬度，传递经纬度字符串，不区分经度在前还是纬度在前，自动提取，
  
  <font color="red">仅仅使用与国内的经纬度坐标>_< </font> 
  
-####  [JsonToken.php](https://github.com/Magein/tools/blob/master/src/common/JsonToken.php)
+####  [JsonToken.php](https://github.com/Magein/tools/blob/master/src/security/JsonToken.php)
 
  > 接口中常用的jwt验证函数
  
  1. make 生成token  可以传递一个字符串 用于记录自定义的标识信息
  2. verify 验证token
  
-#### [XRequestId.php](https://github.com/Magein/tools/blob/master/src/common/ClientIp.php)
+#### [XRequestId.php](https://github.com/Magein/tools/blob/master/src/security/XRequestId.php)
 
  > 自定义的请求验证参数，一般用于接口请求来源验证
  
