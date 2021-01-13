@@ -168,7 +168,7 @@ $result = $tree->tree();
 var_dump($result);
 ```
 
-#### [Verify.php](https://github.com/Magein/tools/blob/master/src/common/Verify.php)
+#### [RegVerify.php](https://github.com/Magein/tools/blob/master/src/common/RegVerify.php)
 
  > 常用的验证字段正则表达式
  

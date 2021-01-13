@@ -9,7 +9,7 @@
 namespace magein\tools\common;
 
 
-class Verify
+class RegVerify
 {
     /**
      * 验证手机
