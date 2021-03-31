@@ -60,6 +60,7 @@ class JsonToken
     }
 
     /**
+     * 获取额外的参数
      * @return string
      */
     public function getSign()
@@ -182,7 +183,7 @@ class JsonToken
      * @param string $input 需要编码的字符串
      * @return string
      */
-    private function base64UrlEncode(string $input)
+    protected function base64UrlEncode(string $input)
     {
         return str_replace('=', '', strtr(base64_encode($input), '+/', '-_'));
     }
@@ -192,7 +193,7 @@ class JsonToken
      * @param string $input 需要解码的字符串
      * @return bool|string
      */
-    private function base64UrlDecode(string $input)
+    protected function base64UrlDecode(string $input)
     {
         $remainder = strlen($input) % 4;
         if ($remainder) {
@@ -209,7 +210,7 @@ class JsonToken
      * @param string $alg
      * @return string
      */
-    private function signature(string $input, string $key, string $alg = 'HS256')
+    protected function signature(string $input, string $key, string $alg = 'HS256')
     {
         $alg_config = array(
             'HS256' => 'sha256'

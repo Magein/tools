@@ -4,13 +4,17 @@ namespace magein\tools\security;
 
 use magein\tools\common\RandomString;
 
+/**
+ * 生成请求的安全参数
+ * Class XRequestId
+ * @package magein\tools\security
+ */
 class XRequestId
 {
     /**
      * @var string
      */
-    private static $key = '2zm38w4zkMy7q4zV2hFuWbJ11FKhVk03';
-
+    protected static $key = '2zm38w4zkMy7q4zV2hFuWbJ11FKhVk03';
 
     /**
      * 生成 request_id
@@ -19,9 +23,7 @@ class XRequestId
      */
     public static function make($key = null)
     {
-        if (empty($key)) {
-            $key = self::$key;
-        }
+        $key = $key ?: self::$key;
 
         $string = RandomString::make(12);
         $timestamp = time();
@@ -30,8 +32,8 @@ class XRequestId
     }
 
     /**
-     * @param string $request_id
-     * @param $key
+     * @param $request_id
+     * @param null $key
      * @return bool
      */
     public static function verify($request_id, $key = null)
@@ -40,9 +42,7 @@ class XRequestId
             return false;
         }
 
-        if (empty($key)) {
-            $key = self::$key;
-        }
+        $key = $key ?: self::$key;
 
         [$string, $sign, $timestamp] = array_pad(explode('.', $request_id), 3, null);
 
