@@ -55,8 +55,8 @@ class MsgDeliver
     }
 
     /**
-     * @param $message
-     * @return string
+     * @param string|null $message
+     * @return mixed
      */
     public static function message(string $message = null)
     {
