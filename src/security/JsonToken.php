@@ -19,10 +19,14 @@ class JsonToken
      * 头部
      * @var array
      */
-    protected $header = array(
+    protected $header = [
         'alg' => 'HS256', //生成signature的算法
         'typ' => 'JWT'  //类型
-    );
+    ];
+
+    protected $payload = [
+        'iss' => 'thinkphp6', //该JWT的签发者
+    ];
 
     /**
      * 使用HMAC生成信息摘要时所使用的密钥
@@ -85,6 +89,28 @@ class JsonToken
     }
 
     /**
+     * @param $key
+     * @param $value
+     */
+    public function setPayloadValue($key, $value): void
+    {
+        if ($key) {
+            $this->payload[$key] = $value;
+        }
+    }
+
+    /**
+     * 设置过期时间
+     * @param $time
+     */
+    public function setExpire($time)
+    {
+        $time = $time ?: time();
+
+        $this->payload['exp'] = $time;
+    }
+
+    /**
      * 公共的荷载参数
      * [
      * 'iss'=>'jwt_admin', //该JWT的签发者
@@ -96,23 +122,33 @@ class JsonToken
      * ]
      * @return array
      */
-    protected function getPayload()
+    protected function getPayload(): array
     {
-        return [
-            'iss' => 'thinkphp6', //该JWT的签发者
-            'iat' => time(), //签发时间
-            'exp' => time() + 86400, //过期时间
-            'sub' => 'user', //面向的用户
-            'jti' => md5(uniqid('user') . time())
-        ];
+        if ($this->payload['iat']) {
+            $this->payload['iat'] = time();
+        }
+
+        if ($this->payload['exp']) {
+            $this->payload['exp'] = time() + 86400 * 7;
+        }
+
+        if ($this->payload['sub']) {
+            $this->payload['sub'] = 'mixed';
+        }
+
+        if ($this->payload['jti']) {
+            $this->payload['jti'] = md5(uniqid() . time());
+        }
+
+        return $this->payload;
     }
 
     /**
      * 获取jwt token
      * @param string $sign 额外的表示数据
-     * @return bool|string
+     * @return string
      */
-    public function make($sign = null)
+    public function make($sign = null): string
     {
         $payload = self::getPayload();
 
@@ -122,9 +158,8 @@ class JsonToken
 
         $base64_header = $this->base64UrlEncode(json_encode($this->getHeader(), JSON_UNESCAPED_UNICODE));
         $base64_payload = $this->base64UrlEncode(json_encode($payload, JSON_UNESCAPED_UNICODE));
-        $token = $base64_header . '.' . $base64_payload . '.' . $this->signature($base64_header . '.' . $base64_payload, $this->getKey(), $this->getHeader()['alg']);
 
-        return $token;
+        return $base64_header . '.' . $base64_payload . '.' . $this->signature($base64_header . '.' . $base64_payload, $this->getKey(), $this->getHeader()['alg']);
     }
 
     /**

@@ -51,7 +51,7 @@ class RandomString
      * @param bool $filter 是否过滤掉 o z 0 2 这些容易混淆的字符
      * @return string
      */
-    public static function make($length = 32, $type = self::TYPE_MIXED, $filter = false)
+    public static function make($length = 32, $type = self::TYPE_MIXED, $filter = true)
     {
         $lower_letter = 'abcdefghijklmnopqrstuvwxyz';
         $upper_letter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

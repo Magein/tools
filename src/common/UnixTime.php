@@ -147,9 +147,9 @@ class UnixTime
     /**
      * 获取自然月的范围
      * @param string $date
-     * @return array|string
+     * @return array
      */
-    public function rangeMonth($date = '')
+    public function rangeMonth($date = ''): array
     {
         return [
             $this->beginMonth($date),
@@ -163,7 +163,7 @@ class UnixTime
      * @param bool $to_string
      * @return array
      */
-    public function rangeWeek($date = '', $to_string = false)
+    public function rangeWeek($date = '', $to_string = false): array
     {
         $date = $this->unix($this->getDate($date));
 
@@ -191,7 +191,7 @@ class UnixTime
      * @param bool $contain_today 是否包含今天
      * @return array
      */
-    public function prevWeek(string $date = '', $contain_today = false)
+    public function prevWeek(string $date = '', $contain_today = false): array
     {
         $end = $this->unix($this->getDate($date));
 
@@ -214,7 +214,7 @@ class UnixTime
      * @param int $week
      * @return array
      */
-    public function lastWeek($week = 1)
+    public function lastWeek($week = 1): array
     {
         return $this->rangeWeek($this->getDate(strtotime("-$week week")));
     }
