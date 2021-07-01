@@ -124,19 +124,19 @@ class JsonToken
      */
     protected function getPayload(): array
     {
-        if ($this->payload['iat']) {
+        if (!isset($this->payload['iat'])) {
             $this->payload['iat'] = time();
         }
 
-        if ($this->payload['exp']) {
+        if (!isset($this->payload['exp'])) {
             $this->payload['exp'] = time() + 86400 * 7;
         }
 
-        if ($this->payload['sub']) {
+        if (!isset($this->payload['sub'])) {
             $this->payload['sub'] = 'mixed';
         }
 
-        if ($this->payload['jti']) {
+        if (!isset($this->payload['jti'])) {
             $this->payload['jti'] = md5(uniqid() . time());
         }
 
