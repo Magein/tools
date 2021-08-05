@@ -1,9 +1,11 @@
 <?php
 
+namespace magein\tools\common;
+
 /**
  * 此类为了获取，不同服务平台返回的经纬度值可以通过此此类自动区分以及获取
  *
- * 仅适用
+ * 仅适用中国地区
  *
  * Class Location
  * @package magein\php_tools\common
