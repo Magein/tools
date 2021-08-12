@@ -1,7 +1,7 @@
 <?php
 
 
-namespace magein\tools\common;
+namespace magein\tools\extra;
 
 use Endroid\QrCode\QrCode as QrcodeLib;
 
