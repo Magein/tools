@@ -6,7 +6,7 @@
  * Time: 17:35
  */
 
-namespace magein\tools\security;
+namespace App\Common\Security;
 
 class JsonToken
 {
@@ -19,25 +19,16 @@ class JsonToken
      * 头部
      * @var array
      */
-    protected $header = [
+    protected $header = array(
         'alg' => 'HS256', //生成signature的算法
         'typ' => 'JWT'  //类型
-    ];
-
-    protected $payload = [
-        'iss' => 'thinkphp6', //该JWT的签发者
-    ];
+    );
 
     /**
      * 使用HMAC生成信息摘要时所使用的密钥
      * @var string
      */
     protected $key = 'fKwOLCXFrlkvVMjQgPRInUETx';
-
-    /**
-     * @var string
-     */
-    protected $sign = '';
 
     /**
      * @return JsonToken|null
@@ -54,28 +45,16 @@ class JsonToken
     /**
      * 设置秘钥
      * @param string $key
-     * @return $this
      */
     public function setKey(string $key)
     {
         $this->key = $key;
-
-        return $this;
-    }
-
-    /**
-     * 获取额外的参数
-     * @return string
-     */
-    public function getSign()
-    {
-        return $this->sign;
     }
 
     /**
      * @return array
      */
-    protected function getHeader()
+    protected function getHeader(): array
     {
         return $this->header;
     }
@@ -83,31 +62,9 @@ class JsonToken
     /**
      * @return string
      */
-    protected function getKey()
+    protected function getKey(): string
     {
         return $this->key;
-    }
-
-    /**
-     * @param $key
-     * @param $value
-     */
-    public function setPayloadValue($key, $value): void
-    {
-        if ($key) {
-            $this->payload[$key] = $value;
-        }
-    }
-
-    /**
-     * 设置过期时间
-     * @param $time
-     */
-    public function setExpire($time)
-    {
-        $time = $time ?: time();
-
-        $this->payload['exp'] = $time;
     }
 
     /**
@@ -124,37 +81,22 @@ class JsonToken
      */
     protected function getPayload(): array
     {
-        if (!isset($this->payload['iat'])) {
-            $this->payload['iat'] = time();
-        }
-
-        if (!isset($this->payload['exp'])) {
-            $this->payload['exp'] = time() + 86400 * 7;
-        }
-
-        if (!isset($this->payload['sub'])) {
-            $this->payload['sub'] = 'mixed';
-        }
-
-        if (!isset($this->payload['jti'])) {
-            $this->payload['jti'] = md5(uniqid() . time());
-        }
-
-        return $this->payload;
+        return [
+            'iss' => 'bocai', //该JWT的签发者
+            'iat' => time(), //签发时间
+            'exp' => time() + 86400 * 7, //过期时间
+            'sub' => 'user', //面向的用户
+            'jti' => md5(uniqid('user') . time())
+        ];
     }
 
     /**
      * 获取jwt token
-     * @param string $sign 额外的表示数据
      * @return string
      */
-    public function make($sign = null): string
+    public function make(): string
     {
         $payload = self::getPayload();
-
-        if ($sign) {
-            $payload['sign'] = $sign;
-        }
 
         $base64_header = $this->base64UrlEncode(json_encode($this->getHeader(), JSON_UNESCAPED_UNICODE));
         $base64_payload = $this->base64UrlEncode(json_encode($payload, JSON_UNESCAPED_UNICODE));
@@ -164,10 +106,10 @@ class JsonToken
 
     /**
      * 验证token
-     * @param string|null $token
+     * @param string $token
      * @return bool|mixed
      */
-    public function verify($token = null)
+    public function verify(string $token)
     {
         if (empty($token) || !is_string($token)) {
             return false;
@@ -203,12 +145,6 @@ class JsonToken
             return false;
         }
 
-        /**
-         * 是否涉及了标识
-         */
-        $this->sign = $payload['sign'] ?? '';
-        unset($payload['sign']);
-
         return $payload;
     }
 
@@ -218,7 +154,7 @@ class JsonToken
      * @param string $input 需要编码的字符串
      * @return string
      */
-    protected function base64UrlEncode(string $input)
+    protected function base64UrlEncode(string $input): string
     {
         return str_replace('=', '', strtr(base64_encode($input), '+/', '-_'));
     }
