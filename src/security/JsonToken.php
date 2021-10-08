@@ -6,7 +6,7 @@
  * Time: 17:35
  */
 
-namespace App\Common\Security;
+namespace magein\tools\security;
 
 class JsonToken
 {
