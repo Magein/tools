@@ -45,10 +45,13 @@ class JsonToken
     /**
      * 设置秘钥
      * @param string $key
+     * @return $this
      */
     public function setKey(string $key)
     {
         $this->key = $key;
+
+        return $this;
     }
 
     /**
