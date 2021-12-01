@@ -75,6 +75,17 @@ class Location
 
         return [];
     }
+    
+    /**
+     * @return array
+     */
+    public function get()
+    {
+        return [
+            'longitude' => $this->longitude,
+            'latitude' => $this->latitude,
+        ];
+    }
 
     /**
      * 自动规整精度为的值
