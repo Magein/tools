@@ -30,7 +30,12 @@ class Location
      */
     public function __construct($location = null)
     {
-        $this->parse($location);
+        if ($location instanceof static) {
+            $this->latitude = $location->getLatitude();
+            $this->longitude = $location->getLongitude();
+        } else {
+            $this->parse($location);
+        }
     }
 
     /**
